@@ -1,6 +1,4 @@
-
-module.exports.pwd
-
-function pwdFunc(){
-  console.log(process.env[PWD]);
-}
+module.exports = function () {
+  console.log(process.env.PWD);
+  process.stdout.write("\nprompt > ");
+};
