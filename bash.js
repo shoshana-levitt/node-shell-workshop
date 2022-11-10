@@ -6,14 +6,16 @@ process.stdout.write("prompt > ");
 
 // The stdin 'data' event fires after a user types in a line
 process.stdin.on("data", (data) => {
-  const cmd = data.toString().trim(); //remove the newline
+  const input = data.toString().trim().split(" ");
+  const cmd = input[0]; //remove the newline
 
   if (cmd === "pwd") {
     pwd();
   } else if (cmd === "ls") {
     ls();
   } else if (cmd === "cat") {
-    cat();
+    const filename = input[1];
+    cat(filename);
   } else {
     process.stdout.write("You typed: " + cmd);
   }
