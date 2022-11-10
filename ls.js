@@ -1,13 +1,11 @@
 const fs = require("fs");
 
-module.exports = function () {
-  // `files` will be an array of filenames, like ['bash.js', 'pwd.js']
+module.exports = (done) => {
   fs.readdir("./", "utf8", (err, files) => {
     if (err) {
-      throw err;
+      done("Something went wrong!");
     } else {
-      process.stdout.write(files.join("\n"));
-      process.stdout.write("\nprompt > ");
+      done(files.join("\n"));
     }
   });
 };
